@@ -9,7 +9,6 @@ mod hello {
     pub fn hello(/*②引数*/) -> /*③戻り値*/ {
         msg!("hello, world!");
         // ④Result型でOkを返す
-        Ok(())
     }
 }
 #[derive(Accounts)]
