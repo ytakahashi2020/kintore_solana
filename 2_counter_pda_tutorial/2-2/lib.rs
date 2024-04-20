@@ -12,7 +12,7 @@ pub mod counter {
 
         // The creation of the counter must be here
         let counter = /* ①変更可 */ /* ②コンテキストのカウンター */;
-        counter.authority = ctx.accounts.authority./* ③なんでしょう */;
+        counter.authority = ctx.accounts.authority./* ③公開鍵 */;
         counter.count = 0;
 
         msg!("Current count is {}", counter.count);
