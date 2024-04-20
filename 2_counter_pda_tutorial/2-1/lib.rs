@@ -3,7 +3,7 @@
 // ②idを宣言する
 
 
-// ③プログラムを定義する
+// ③プログラム始める
 // Smart contract functions
 pub mod counter {
     // ④親モジュールからのインポート
@@ -38,7 +38,7 @@ pub mod counter {
 }
 
 // Data validators
-#[derive(Accounts)]
+// 11アカウント付きの構造体を始める
 pub struct CreateCounter<'info> {
     #[account(mut)]
     authority: Signer<'info>,
@@ -53,7 +53,7 @@ pub struct CreateCounter<'info> {
     system_program: Program<'info, System>,
 }
 
-#[derive(Accounts)]
+// 12アカウント付きの構造体を始める
 pub struct UpdateCounter<'info> {
     authority: Signer<'info>,
     #[account(mut, has_one = authority)]
