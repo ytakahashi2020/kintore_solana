@@ -1,4 +1,4 @@
-// ①「Expense Tracker」という非同期のテスト開始
+// ①「counter」という非同期のテスト開始
     const systemProgram = /* ②システムプログラム */;
   // ③ テストケース１　「Create Counter!」（非同期）
 
