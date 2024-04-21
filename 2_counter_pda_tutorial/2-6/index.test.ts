@@ -6,8 +6,8 @@ describe("counter", () => {
   it("Create Counter!", async () => {
     // Keypair = account
     const [counter, _counterBump] =
-      await anchor.web3.PublicKey.findProgramAddressSync(
-        [pg.wallet.publicKey.toBytes()],
+      await /* 復習（PDAの取得） */(
+        /* 復習（署名者の公開鍵のシード） */,
         pg.program.programId
       );
     console.log("Your counter address", counter.toString());
@@ -25,33 +25,33 @@ describe("counter", () => {
   it("Fetch a counter!", async () => {
     // Keypair = account
     const [counterPubkey, _] =
-      await anchor.web3.PublicKey.findProgramAddressSync(
-        [pg.wallet.publicKey.toBytes()],
+      await /* 復習（PDAの取得） */(
+        /* 復習（署名者の公開鍵のシード） */,
         pg.program.programId
       );
     console.log("Your counter address", counterPubkey.toString());
     const counter = await /* ⑤カウンターの取得 */(/* ⑥引数 */);
-    console.log("Your counter", counter);
+    console.log("Your counter count is ", counter./* ⑦counterの数字 */);
   });
 
   it("Update a counter!", async () => {
     // Keypair = account
     const [counterPubkey, _] =
-      await anchor.web3.PublicKey.findProgramAddressSync(
-        [pg.wallet.publicKey.toBytes()],
+      await anchor./* 復習（PDAの取得） */(
+        /* 復習（署名者の公開鍵のシード） */,
         pg.program.programId
       );
     console.log("Your counter address", counterPubkey.toString());
-    const counter = await /* ⑦カウンターの取得 */(/* ⑧引数 */);
-    console.log("Your counter", counter);
+    const counter = await /* ⑧カウンターの取得 */(/* ⑨引数 */);
+    console.log("Your counter count is ", counter./* 10counterの数字 */);
     const tx = await pg.program.methods
       .updateCounter()
-      ./* ⑨アカウント */({
+      ./* 11アカウント */({
         counter: counterPubkey,
       })
-      ./* 10 RPC */;
+      ./* 12 RPC */;
     console.log("Your transaction signature", tx);
-    const counterUpdated = await /* 11カウンターの取得 */(/* 12引数 */);
-    console.log("Your counter count is: ", counterUpdated.count./* 13数字に */);
+    const counterUpdated = await /* 13カウンターの取得 */(/* 14引数 */);
+    console.log("Your counter count is: ", counterUpdated./* 15counterの数字 */);
   });
 });
