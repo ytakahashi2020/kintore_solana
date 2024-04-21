@@ -42,7 +42,7 @@ describe("counter", () => {
     console.log("Your counter address", counterPubkey.toString());
     const counter = await pg.program.account.counter.fetch(counterPubkey);
     console.log("Your counter", counter);
-    const tx = await pg.program.methods
+    const tx = await /* 11メソッドの実行 */
       .updateCounter()
       .accounts({
         counter: counterPubkey,
