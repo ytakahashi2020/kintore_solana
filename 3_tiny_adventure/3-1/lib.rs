@@ -1,20 +1,20 @@
 
 // ①anchor_langのpreludeを使う
 
-// ②idを宣言するdeclare_id!("");
+// ②idを宣言する
 
 // ③プログラムを定義する
 mod tiny_adventure {
     // ④親モジュールからのインポート
 
-    pub fn initialize(/*　⑤Initializeという型の引数　*/,) -> /*　⑥戻り値　*/ {
+    pub fn initialize(/*　⑤Initializeという構造体の引数　*/,) -> /*　⑥戻り値　*/ {
         ctx.accounts.new_game_data_account.player_position = 0;
         msg!("A Journey Begins!");
         msg!("o.......");
         Ok(())
     }
 
-    pub fn move_left(/*　⑦MoveLeftという型の引数　*/) -> /*　⑧戻り値　*/ {
+    pub fn move_left(/*　⑦MoveLeftという構造体の引数　*/) -> /*　⑧戻り値　*/ {
         let game_data_account = &mut ctx.accounts.game_data_account;
         if game_data_account.player_position == 0 {
             msg!("You are back at the start.");
@@ -25,7 +25,7 @@ mod tiny_adventure {
         Ok(())
     }
 
-    pub fn move_right(/*　⑨MoveRightという型の引数　*/) -> /*　➓戻り値　*/  {
+    pub fn move_right(/*　⑨MoveRightという構造体の引数　*/) -> /*　➓戻り値　*/  {
         let game_data_account = &mut ctx.accounts.game_data_account;
         if game_data_account.player_position == 3 {
             msg!("You have reached the end! Super!");
