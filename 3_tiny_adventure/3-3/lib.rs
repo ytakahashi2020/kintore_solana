@@ -61,7 +61,7 @@ pub struct Initialize<'info> {
     // You can also use the signer as seed [signer.key().as_ref()],
     #[account(
         /* ①必要なら初期化 */,
-        /* ②シード値は「level1」をバッファにしたもの */,
+        /* ②シード値は「level1」をバイトにしたもの */,
         /* ③bump */,
         payer = signer,
         space = 8 + 1
