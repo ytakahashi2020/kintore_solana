@@ -26,24 +26,24 @@ try {
     ./*⑥署名者 */ ([pg.wallet.keypair])
     ./*⑦RPC */ ;
 
-  await logTransaction(txHash);
+  // await logTransaction(txHash);
   console.log("A journey begins...");
   console.log("o........");
 }
 
 
 // アドレスの表示
-console.log("PGのアドレス：", pg.wallet.publicKey);
-console.log("systemProgramのアドレス：", web3.SystemProgram.length);
+// console.log("PGのアドレス：", pg.wallet.publicKey);
+// console.log("systemProgramのアドレス：", web3.SystemProgram.length);
 
 // キーペアの表示
 // console.log("key Pair", pg.wallet.keypair);
 
 // カーブ上か否か
-console.log(
-  "カーブ上か否か：",
-  anchor.web3.PublicKey.(globalLevel1GameDataAccount)
-);
+// console.log(
+//   "カーブ上か否か：",
+//   anchor.web3.PublicKey.(globalLevel1GameDataAccount)
+// );
 
 // Here you can play around now, move left and right
 txHash = await pg.program.methods
@@ -54,7 +54,7 @@ txHash = await pg.program.methods
   })
   ./*11署名者 */([pg.wallet.keypair])
   ./*12実行 */;
-await logTransaction(txHash);
+// await logTransaction(txHash);
 
 gameDateAccount = await pg.program.account.gameDataAccount.fetch(
   globalLevel1GameDataAccount
@@ -62,33 +62,33 @@ gameDateAccount = await pg.program.account.gameDataAccount.fetch(
 
 console.log("Player position is:", gameDateAccount.playerPosition.toString());
 
-switch (gameDateAccount.playerPosition) {
-  case 0:
-    console.log("A journey begins...");
-    console.log("o........");
-    break;
-  case 1:
-    console.log("....o....");
-    break;
-  case 2:
-    console.log("......o..");
-    break;
-  case 3:
-    console.log(".........\\o/");
-    break;
-}
+// switch (gameDateAccount.playerPosition) {
+//   case 0:
+//     console.log("A journey begins...");
+//     console.log("o........");
+//     break;
+//   case 1:
+//     console.log("....o....");
+//     break;
+//   case 2:
+//     console.log("......o..");
+//     break;
+//   case 3:
+//     console.log(".........\\o/");
+//     break;
+// }
 
-async function logTransaction(txHash) {
-  const { blockhash, lastValidBlockHeight } =
-    await pg.connection.getLatestBlockhash();
+// async function logTransaction(txHash) {
+//   const { blockhash, lastValidBlockHeight } =
+//     await pg.connection.getLatestBlockhash();
 
-  await pg.connection.confirmTransaction({
-    blockhash,
-    lastValidBlockHeight,
-    signature: txHash,
-  });
+//   await pg.connection.confirmTransaction({
+//     blockhash,
+//     lastValidBlockHeight,
+//     signature: txHash,
+//   });
 
-  console.log(
-    `Solana Explorer: https://explorer.solana.com/tx/${txHash}?cluster=devnet`
-  );
-}
+//   console.log(
+//     `Solana Explorer: https://explorer.solana.com/tx/${txHash}?cluster=devnet`
+//   );
+// }
