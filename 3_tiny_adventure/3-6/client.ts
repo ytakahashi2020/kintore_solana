@@ -26,7 +26,7 @@ try {
     .signers(/* ④署名者*/)
     .rpc();
 
-  await logTransaction(txHash);
+  // await logTransaction(txHash);
   console.log("A journey begins...");
   console.log("o........");
 }
@@ -40,7 +40,7 @@ txHash = await pg.program.methods
   })
   .signers(/* ⑥署名者*/)
   .rpc();
-await logTransaction(txHash);
+// await logTransaction(txHash);
 
 gameDateAccount = await pg.program.account.gameDataAccount.fetch(
   globalLevel1GameDataAccount
@@ -48,33 +48,33 @@ gameDateAccount = await pg.program.account.gameDataAccount.fetch(
 
 console.log("Player position is:", gameDateAccount.playerPosition./* ⑦文字列変換*/);
 
-switch (gameDateAccount.playerPosition) {
-  case 0:
-    console.log("A journey begins...");
-    console.log("o........");
-    break;
-  case 1:
-    console.log("....o....");
-    break;
-  case 2:
-    console.log("......o..");
-    break;
-  case 3:
-    console.log(".........\\o/");
-    break;
-}
+// switch (gameDateAccount.playerPosition) {
+//   case 0:
+//     console.log("A journey begins...");
+//     console.log("o........");
+//     break;
+//   case 1:
+//     console.log("....o....");
+//     break;
+//   case 2:
+//     console.log("......o..");
+//     break;
+//   case 3:
+//     console.log(".........\\o/");
+//     break;
+// }
 
-async function logTransaction(txHash) {
-  const { blockhash, lastValidBlockHeight } =
-    await pg.connection.getLatestBlockhash();
+// async function logTransaction(txHash) {
+//   const { blockhash, lastValidBlockHeight } =
+//     await pg.connection.getLatestBlockhash();
 
-  await pg.connection.confirmTransaction({
-    blockhash,
-    lastValidBlockHeight,
-    signature: txHash,
-  });
+//   await pg.connection.confirmTransaction({
+//     blockhash,
+//     lastValidBlockHeight,
+//     signature: txHash,
+//   });
 
-  console.log(
-    `Solana Explorer: https://explorer.solana.com/tx/${txHash}?cluster=devnet`
-  );
-}
+//   console.log(
+//     `Solana Explorer: https://explorer.solana.com/tx/${txHash}?cluster=devnet`
+//   );
+// }
