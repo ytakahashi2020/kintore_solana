@@ -31,6 +31,20 @@ try {
   console.log("o........");
 }
 
+
+// アドレスの表示
+console.log("PGのアドレス：", pg.wallet.publicKey);
+console.log("systemProgramのアドレス：", web3.SystemProgram.length);
+
+// キーペアの表示
+// console.log("key Pair", pg.wallet.keypair);
+
+// カーブ上か否か
+console.log(
+  "カーブ上か否か：",
+  anchor.web3.PublicKey.(globalLevel1GameDataAccount)
+);
+
 // Here you can play around now, move left and right
 txHash = await pg.program.methods
   //.moveLeft()
