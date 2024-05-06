@@ -48,31 +48,33 @@ gameDateAccount = await pg.program.account.gameDataAccount.fetch(
 
 console.log("Player position is:", gameDateAccount.playerPosition.toString());
 
-switch (gameDateAccount.playerPosition) {
-  case 0:
-    console.log("A journey begins...");
-    console.log("o........");
-    break;
-  case 1:
-    console.log("....o....");
-    break;
-  case 2:
-    console.log("......o..");
-    break;
-  case 3:
-    console.log(".........\\o/");
-    break;
-}
+// switch (gameDateAccount.playerPosition) {
+//   case 0:
+//     console.log("A journey begins...");
+//     console.log("o........");
+//     break;
+//   case 1:
+//     console.log("....o....");
+//     break;
+//   case 2:
+//     console.log("......o..");
+//     break;
+//   case 3:
+//     console.log(".........\\o/");
+//     break;
+// }
 
-async function logTransaction(/* ①引数 */) {
+async function logTransaction(txHash) {
   const { blockhash, lastValidBlockHeight } =
-    await /* ②最新のブロックの取得 */;
+    await /* ①最新のブロックの取得 */;
 
-  await /* ③トランザクションの実行 */({
+  let result = await /* ②トランザクションの実行 */({
     blockhash,
     lastValidBlockHeight,
-    signature: /* ④何を入れる？ */,
+    signature: /* ③？ */,
   });
+
+  console.log("Transaction executed in slot:", result.);
 
   console.log(
     `Solana Explorer: https://explorer.solana.com/tx/${txHash}?cluster=devnet`
