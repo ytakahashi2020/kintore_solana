@@ -74,7 +74,7 @@ async function logTransaction(txHash) {
     signature: /* ③？ */,
   });
 
-  console.log("Transaction executed in slot:", result.);
+  console.log("Transaction executed in slot:", result./* ④スロットの表示*/);
 
   console.log(
     `Solana Explorer: https://explorer.solana.com/tx/${txHash}?cluster=devnet`
