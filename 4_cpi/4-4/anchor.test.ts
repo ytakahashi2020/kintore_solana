@@ -13,7 +13,7 @@ describe("cpi-invoke", () => {
 
   const program = anchor /* 今回のプログラムを呼び出す　*/ as Program<CpiInvoke>;
 
-  const sender =  as anchor.Wallet;
+  const sender = provider as anchor.Wallet;
   const recipient = 
 
   const transferAmount = 0.01 * ;
