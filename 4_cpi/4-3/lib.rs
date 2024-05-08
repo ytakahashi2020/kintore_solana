@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_lang::solana_program::{program::invoke, system_instruction};
+use anchor_lang::solana_program::{/* invoke*/, /* system instruction*/};
 
 declare_id!("");
 
@@ -8,9 +8,9 @@ pub mod cpi_invoke {
     use super::*;
 
     pub fn sol_transfer(ctx: Context<SolTransfer>, amount: u64) -> Result<()> {
-        let from_pubkey = ctx.accounts.sender.to_account_info();
-        let to_pubkey = ctx.accounts.recipient.to_account_info();
-        let program_id = ctx.accounts.system_program.to_account_info();
+        let from_pubkey = ctx.accounts.sender/* account infoへ*/;
+        let to_pubkey = ctx.accounts.recipient/* account infoへ*/;
+        let program_id = ctx.accounts.system_program/* account infoへ*/;
 
         let instruction =
              /* system_instructionのtransferを使う　*/(/* 送付元から*/, /* 送付先へから*/, amount);
