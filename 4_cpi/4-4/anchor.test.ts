@@ -5,15 +5,18 @@ import { Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 describe("cpi-invoke", () => {
   const provider = anchor; /* プロバイダーのURL*/
+
+  console.log("provider:", provider);
+
   /* プロバイダーの設定　*/
+  anchor.
 
-  const program =
-    anchor /* 今回のプログラムを呼び出す　*/ as Program<CpiInvoke>;
+  const program = anchor /* 今回のプログラムを呼び出す　*/ as Program<CpiInvoke>;
 
-  const sender = provider.wallet as anchor.Wallet;
-  const recipient = new Keypair();
+  const sender =  as anchor.Wallet;
+  const recipient = 
 
-  const transferAmount = 0.01 * LAMPORTS_PER_SOL;
+  const transferAmount = 0.01 * ;
 
   it("SOL Transfer Anchor", async () => {
     const transactionSignature = await program.methods
