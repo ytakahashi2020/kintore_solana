@@ -4,14 +4,14 @@ import { CpiInvokeSigned } from "../target/types/cpi_invoke_signed";
 import { PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 describe("cpi-invoke-signed", () => {
-  const provider = anchor/*AnchorProvider.env()*/;
-  anchor/* setProvider*/(provider);
+  const provider = anchor.AnchorProvider.env();
+  anchor.setProvider(provider);
 
-  const program = anchor/* program*/ */ as Program<CpiInvokeSigned>;
+  const program = anchor.workspace.CpiInvokeSigned as Program<CpiInvokeSigned>;
 
   const wallet = provider.wallet as anchor.Wallet;
-  const [PDA] = PublicKey/*PDAの取得*/(
-    /* pdaというシード*/ ,
+  const [PDA] = /* pdaの取得*/(
+    /* pdaというシード */,
     program.programId
   );
 
@@ -19,7 +19,7 @@ describe("cpi-invoke-signed", () => {
 
   it("PDA SOL Transfer invoke_signed", async () => {
     const transactionSignature = await program.methods
-      .solTransfer(new BN(transferAmount))
+      /* methods*/
       .accounts({
         pdaAccount: PDA,
         recipient: wallet.publicKey,
