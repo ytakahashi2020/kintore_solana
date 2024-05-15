@@ -4,7 +4,7 @@ import { Keypair } from "@solana/web3.js";
 const connection = new web3.Connection(web3.clusterApiUrl("devnet"));
 let minRent = await connection.getMinimumBalanceForRentExemption(0);
 let blockhash = await connection
-  /*ブロックハッシュの取得*/()
+  .getLatestBlockhash()
   .then((res) => res.blockhash);
 
 const payer = pg.wallet;
@@ -18,16 +18,16 @@ const instructions = [
   }),
 ];
 
-const messageV0 = new web3./* transaction messageの作成*/({
+const messageV0 = new web3.TransactionMessage({
   payerKey: payer.publicKey,
-  recentBlockhash: /* 最近のブロックハッシュ */,
+  recentBlockhash: blockhash,
   instructions,
 }).compileToV0Message();
 
-const transaction = new web3./* バージョン付きトランザクションの作成 */;
+const transaction = new web3.VersionedTransaction(messageV0);
 
 // sign your transaction with the required `Signers`
-/* 署名を行う */
+transaction.sign([payer.keypair]);
 
-const txId = await connection /* トランザクションを送付する */;
+const txId = await connection.sendTransaction(transaction);
 console.log(`https://explorer.solana.com/tx/${txId}?cluster=devnet`);
