@@ -22,12 +22,12 @@ const messageV0 = new web3./* transaction messageの作成*/({
   payerKey: payer.publicKey,
   recentBlockhash: /* 最近のブロックハッシュ */,
   instructions,
-}).compileToV0Message();
+})/* バージョン0に */;
 
-const transaction = new web3./* バージョン付きトランザクションの作成 */;
+const transaction = new web3.VersionedTransaction(messageV0);
 
 // sign your transaction with the required `Signers`
-/* 署名を行う */
+transaction.sign([payer.keypair]);
 
-const txId = await connection /* トランザクションを送付する */;
+const txId = await connection.sendTransaction(transaction);
 console.log(`https://explorer.solana.com/tx/${txId}?cluster=devnet`);
