@@ -7,7 +7,7 @@ const slot = await /* 最新のスロットの取得 */;
 // `payer` is a valid `Keypair` with enough SOL to pay for the execution
 
 const [lookupTableInst, lookupTableAddress] =
-  web3.AddressLookupTableProgram/*ルックアップテーブルの作成*/({
+  web3./*ルックアップテーブルの作成*/({
     authority: payer.publicKey,
     payer: payer.publicKey,
     recentSlot: ,
@@ -19,7 +19,7 @@ console.log("lookup table address:", lookupTableAddress.toBase58());
 // send the `lookupTableInst` instruction in a transaction
 
 // add addresses to the `lookupTableAddress` table via an `extend` instruction
-const extendInstruction = web3.AddressLookupTableProgram/*ルックアップテーブルの拡張*/({
+const extendInstruction = web3./*ルックアップテーブルの拡張*/({
   payer: payer.publicKey,
   authority: payer.publicKey,
   lookupTable: lookupTableAddress,
