@@ -1,19 +1,19 @@
+use anchor_lang::prelude::*;
 
-// ①anchor_langのpreludeを使う
+// Your program Id will be added here when you enter "build" command
+declare_id!("CXLZPd7D54MLRJqhFMwdminUoWGjSUiNqVTLPEZE6xN6");
 
-// ②idを宣言するdeclare_id!("");
-
-// ③プログラムを定義する
+#[program]
 pub mod etracker {
 
-    // ④親モジュールからのインポート
+    use super::*;
 
     pub fn initialize_expense(
-        /*　⑤InitializeExpenseという型の引数　*/,
+        ctx: Context<InitializeExpense>,
         id: u64,
         merchant_name: String,
         amount: u64,
-    ) -> /*　⑥戻り値　*/ {
+    ) -> Result<()> {
         let expense_account = &mut ctx.accounts.expense_account;
 
         expense_account.id = id;
@@ -21,30 +21,30 @@ pub mod etracker {
         expense_account.amount = amount;
         expense_account.owner = *ctx.accounts.authority.key;
 
-        // ⑦Result型でOkを返す
+        Ok(())
     }
 
     pub fn modify_expense(
-        /*　⑧ModifyExpenseという型の引数　*/,
+        ctx: Context<ModifyExpense>,
         _id: u64,
         merchant_name: String,
         amount: u64,
-    ) -> /*　⑨戻り値　*/ {
+    ) -> Result<()> {
         let expense_account = &mut ctx.accounts.expense_account;
         expense_account.merchant_name = merchant_name;
         expense_account.amount = amount;
 
-        // ➓Result型でOkを返す
+        Ok(())
     }
 
-    pub fn delete_expense(_ctx: Context<DeleteExpense>, _id: u64) -> /*　11戻り値　*/{
-        // 12Result型でOkを返す
+    pub fn delete_expense(_ctx: Context<DeleteExpense>, _id: u64) -> Result<()> {
+        Ok(())
     }
 }
 
-// 13引数で使うアカウントを定義する
+#[derive(Accounts)]
 #[instruction(id : u64)]
-/*　14外から呼べる構造体　*/  InitializeExpense<'info> {
+pub struct InitializeExpense<'info> {
     #[account(mut)]
     pub authority: Signer<'info>,
 
@@ -60,9 +60,9 @@ pub mod etracker {
     pub system_program: Program<'info, System>,
 }
 
-// 15引数で使うアカウントを定義する
+#[derive(Accounts)]
 #[instruction(id : u64)]
-/*　16外から呼べる構造体　*/  ModifyExpense<'info> {
+pub struct ModifyExpense<'info> {
     #[account(mut)]
     pub authority: Signer<'info>,
 
@@ -76,9 +76,9 @@ pub mod etracker {
     pub system_program: Program<'info, System>,
 }
 
-// 17引数で使うアカウントを定義する
+#[derive(Accounts)]
 #[instruction(id : u64)]
-/*　18外から呼べる構造体　*/  DeleteExpense<'info> {
+pub struct DeleteExpense<'info> {
     #[account(mut)]
     pub authority: Signer<'info>,
 
