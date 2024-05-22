@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 
 // Your program Id will be added here when you enter "build" command
-declare_id!("CXLZPd7D54MLRJqhFMwdminUoWGjSUiNqVTLPEZE6xN6");
+declare_id!("");
 
 #[program]
 pub mod etracker {
